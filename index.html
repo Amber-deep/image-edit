@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image</title>
+    <link rel="stylesheet" href="css/img_properties.css">
+</head>
+<body>
+    <div class="main"> 
+        <div class="sliders">
+            <div class="filter">
+                <label for="blur">Blur</label>
+                <input type="range" min="0" max="5" value="0" step="0.1" id="blur">
+            </div>
+            <div class="filter">
+                <label for="Contrast">Contrast</label>
+                <input type="range" min="0" max="200" value="100"  id="Contrast">
+            </div>
+            <div class="filter">
+                <label for="width">Width</label>
+                <input type="range" min="50" max="100" value="100" id="width">
+            </div>
+        </div>
+        </div>
+        <div class="main1">
+                <img src="images/nature-g6b49c7f6d_1920.jpg" id="uploadimg">
+        </div>
+    <script>
+        let filterA = document.getElementById("blur");
+        let filterB = document.getElementById("Contrast");
+        let filterC = document.getElementById("width");
+
+        let uploadbtn = document.getElementById("uploadimg");
+
+        let sliders = document.querySelectorAll(".filter input[type = 'range']");
+        console.log(sliders);
+        sliders.forEach(sliders => {
+            sliders.addEventListener("input", addfilter);
+        });
+        function addfilter(){
+            uploadbtn.style.filter = `blur(${filterA.value}px)
+            contrast(${filterB.value}%)`
+
+            uploadbtn.style.width = `${filterC.value}%`;
+            // width(${filterC.value}%)`;
+            console.log(uploadbtn.style.filter);
+        }
+        
+        // let blurimg = document.getElementById("blurr");
+        // let uploadimg = document.getElementById("uploadimg")
+        // let sliders = document.querySelectorAll("blurr input[type = 'range']");
+        // console.log(sliders);
+        // sliders.forEach(slider => {
+        //     slider.addEventListener("input", addFilter);
+
+        // });
+        // function addFilter(){
+        //     uploadimg.style.filter = `blur(${blurimg.value}px)`
+        // }
+    </script>
+</body>
+</html>
